@@ -3,6 +3,13 @@ trigger:
 - feature/*
 pool: vistara 
 stages:
+  - stage: Securityacan
+    jobs:
+      - job: Securityscan
+        steps:
+        - task: CmdLine@2
+          inputs:
+            script: 'checkov -d .'
   - stage: terraformplan
     jobs:
       - job: terraformplan
